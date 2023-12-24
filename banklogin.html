@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+      integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      #wrapper {
+        text-align: center;
+        width: 50%;
+        border: 1px solid gray;
+        padding: 20px;
+      }
+      #user {
+        font-size: 100px;
+        color: rgb(74, 182, 74);
+      }
+      input {
+        border: none;
+        border-bottom: 2px solid gray;
+        margin-bottom: 30px;
+        width: 75%;
+      }
+
+      #passinput {
+        position: relative;
+      }
+      #passinput span {
+        position: absolute;
+        top: 0;
+        right: 40px;
+        cursor: pointer;
+        color: rgb(78, 75, 75);
+        font-size: 15px;
+      }
+      #passinput span:hover {
+        color: rgb(46, 158, 46);
+      }
+      #login {
+        background-color: rgb(46, 158, 46);
+        border: none;
+        border-radius: 10px;
+        padding: 5px 20px;
+        cursor: pointer;
+        color: white;
+        transition: 0.5s;
+      }
+      #login:hover {
+        color: rgb(38, 88, 38);
+        background-color: rgb(85, 207, 85);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="user">
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        <p style="font-size: 20px; color: rgb(61, 161, 61); margin-top: 0">
+          fafakhaqanii
+        </p>
+      </div>
+      <div><input type="text" id="username" /></div>
+      <div id="passinput">
+        <input type="text" id="pass" />
+        <span><i class="fa fa-eye" aria-hidden="true" id="showPass"></i></span>
+        <span
+          ><i
+            class="fa fa-eye-slash"
+            aria-hidden="true"
+            style="display: none"
+          ></i
+        ></span>
+      </div>
+      <button id="login">log in <span id="demo">10</span></button>
+    </div>
+    <script>
+      function changeToPass() {
+        document.getElementById("pass").type = "password";
+        document.getElementById("showPass").classList.add("fa-eye");
+        document.getElementById("showPass").classList.remove("fa-eye-slash");
+      }
+
+      function changeToText() {
+        document.getElementById("pass").type = "text";
+        document.getElementById("showPass").classList.remove("fa-eye");
+        document.getElementById("showPass").classList.add("fa-eye-slash");
+      }
+      document.getElementById("showPass").onmousedown = function () {
+        changeToText();
+      };
+      document.getElementById("showPass").onmouseup = function () {
+        changeToPass();
+      };
+      document.getElementById("showPass").onmouseleave = function () {
+        changeToPass();
+      };
+      let remainTime = 10;
+      setInterval(function () {
+        remainTime -= 1;
+        document.getElementById("demo").innerHTML = remainTime;
+        if (remainTime == 0) {
+          window.location.assign("https://ib.qmb.ir");
+        }
+        if (remainTime < 10) {
+          document.getElementById("demo").innerHTML = `0${remainTime}`;
+        }
+      }, 1000);
+    </script>
+  </body>
+</html>
