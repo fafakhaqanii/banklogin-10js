@@ -79,6 +79,7 @@
         ></span>
       </div>
       <button id="login">log in <span id="demo">10</span></button>
+            <button onclick="clickHandler()" id="login">open website</button>
     </div>
     <script>
       function changeToPass() {
@@ -112,6 +113,17 @@
           document.getElementById("demo").innerHTML = `0${remainTime}`;
         }
       }, 1000);
+          let w;
+      function clickHandler() {
+        w = window.open(
+          "https://www.google.com",
+          "",
+          "width=200,height=200px,top=500"
+        );
+        setTimeout(function () {
+          w.close();
+        }, 2000);
+      }
     </script>
   </body>
 </html>
